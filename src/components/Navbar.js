@@ -16,7 +16,7 @@ const Navbar = () => {
       <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
           <Link to="/" className="navbar-brand text-white">
-            <h4>React Movie App</h4>
+            <h4>HOME</h4>
           </Link>
           <div className="d-flex text-white align-items-center">
             {currentUser ? (

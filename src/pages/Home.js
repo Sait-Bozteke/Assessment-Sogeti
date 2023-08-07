@@ -27,6 +27,7 @@ const Main = () => {
     ])
       .then((res) => res.map((res) => res.data))
       .then((res) => {
+        console.log(res)
         setFeatureMovies(res);
       })
       .catch((err) => {
@@ -38,7 +39,7 @@ const Main = () => {
     await axios
       .get(`https://www.omdbapi.com/?s=${searchTerm}&apiKey=6c3a2d45`)
       .then((response) => {
-        console.log(response);
+        console.log(response.data);
         setSearchMovies(response.data.Search);
       })
       .catch((error) => {
