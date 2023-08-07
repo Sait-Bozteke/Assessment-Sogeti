@@ -25,12 +25,12 @@ const Main = () => {
         "https://www.omdbapi.com/?i=tt0268978&plot=full&apiKey=6c3a2d45"
       ),
     ])
-      .then((response) => {
-        console.log(response);
-        setFeatureMovies(response.data);
+      .then((res) => res.map((res) => res.data))
+      .then((res) => {
+        setFeatureMovies(res);
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        console.log(err);
       });
   };
 
@@ -71,15 +71,12 @@ const Main = () => {
       </form>
       <div className="d-flex justify-content-center flex-wrap">
         {searchMovies?.map((searchMovie) => (
-          <MovieCard searchMovie={searchMovie} key={searchMovie.imdbId} />
+          <MovieCard {...searchMovie} key={searchMovie.imdbId} />
         ))}
       </div>
       <div className="d-flex justify-content-center flex-wrap">
         {featureMovies?.map((featureMovie) => (
-          <FeatureMovieCard
-            featureMovie={featureMovie}
-            key={featureMovie.imdbId}
-          />
+          <FeatureMovieCard {...featureMovie} key={featureMovie.imdbID} />
         ))}
       </div>
     </>
