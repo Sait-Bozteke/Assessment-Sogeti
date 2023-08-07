@@ -71,14 +71,13 @@ const Main = () => {
         <button type="submit">Search</button>
       </form>
       <div className="d-flex justify-content-center flex-wrap">
-        {searchMovies?.map((searchMovie) => (
-          <SearchMovieCard {...searchMovie} key={searchMovie.imdbId} />
-        ))}
-      </div>
-      <div className="d-flex justify-content-center flex-wrap">
-        {featureMovies?.map((featureMovie) => (
-          <FeatureMovieCard {...featureMovie} key={featureMovie.imdbID} />
-        ))}
+        {searchTerm
+          ? searchMovies?.map((searchMovie) => (
+              <SearchMovieCard {...searchMovie} key={searchMovie.imdbId} />
+            ))
+          : featureMovies?.map((featureMovie) => (
+              <FeatureMovieCard {...featureMovie} key={featureMovie.imdbID} />
+            ))}
       </div>
     </>
   );
