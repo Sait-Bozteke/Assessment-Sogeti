@@ -5,12 +5,7 @@ import Register from "../pages/Register";
 import React from "react";
 import Navbar from "../components/Navbar";
 
-import { AuthContext } from "../context/AuthContext";
-import { useContext } from "react";
-
 const AppRouter = () => {
-  const { currentUser } = useContext(AuthContext);
-
   return (
     <Router>
       <Navbar />

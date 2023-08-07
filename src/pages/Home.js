@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import MovieCard from "../components/SearchMovieCard";
+import SearchMovieCard from "../components/SearchMovieCard";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import FeatureMovieCard from "../components/FeatureMovieCard";
@@ -27,7 +27,7 @@ const Main = () => {
     ])
       .then((res) => res.map((res) => res.data))
       .then((res) => {
-        console.log(res)
+        console.log(res);
         setFeatureMovies(res);
       })
       .catch((err) => {
@@ -72,7 +72,7 @@ const Main = () => {
       </form>
       <div className="d-flex justify-content-center flex-wrap">
         {searchMovies?.map((searchMovie) => (
-          <MovieCard {...searchMovie} key={searchMovie.imdbId} />
+          <SearchMovieCard {...searchMovie} key={searchMovie.imdbId} />
         ))}
       </div>
       <div className="d-flex justify-content-center flex-wrap">
