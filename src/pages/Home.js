@@ -11,6 +11,7 @@ const Main = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchMovies, setSearchMovies] = useState([]);
   const [featureMovies, setFeatureMovies] = useState([]);
+  console.log(searchMovies);
 
   useEffect(() => {
     getFeatureMovies();
@@ -35,17 +36,23 @@ const Main = () => {
       });
   };
 
+  // const getSearchData = async() =>{
+  //   searchMovies.data.Search
+  // }
+
   const getSearchMovies = async (searchTerm) => {
     await axios
       .get(`https://www.omdbapi.com/?s=${searchTerm}&apiKey=6c3a2d45`)
-      .then((response) => {
-        console.log(response.data);
-        setSearchMovies(response.data.Search);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      .then((response) => setSearchMovies(response.data.Search));
   };
+
+  // const getSearchTerm = async() =>{
+  //   console.log(searchMovies)
+  //   // searchMovies.data.Search.map((movie)=>
+  //   //   await axios.get(
+  //   //   `https://www.omdbapi.com/?i=${movie.imdbID}&apiKey=6c3a2d45`)}
+  // }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (searchTerm && currentUser) {
@@ -72,9 +79,11 @@ const Main = () => {
       </form>
       <div className="d-flex justify-content-center flex-wrap">
         {searchTerm
-          ? searchMovies?.map((searchMovie) => (
-              <SearchMovieCard {...searchMovie} key={searchMovie.imdbId} />
-            ))
+          ? searchMovies
+              ?.slice(0, 5)
+              .map((searchMovie) => (
+                <SearchMovieCard {...searchMovie} key={searchMovie.imdbID} />
+              ))
           : featureMovies?.map((featureMovie) => (
               <FeatureMovieCard {...featureMovie} key={featureMovie.imdbID} />
             ))}
