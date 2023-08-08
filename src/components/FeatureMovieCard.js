@@ -1,15 +1,9 @@
+import React from "react";
+
 const defaultImage =
   "https://images.unsplash.com/photo-1581905764498-f1b60bae941a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80";
 
-const FeatureMovieCard = ({
-  Title,
-  Poster,
-  Year,
-  Type,
-  Plot,
-  imbdID,
-  Awards,
-}) => {
+const MovieCard = ({ Title, Poster, Year, Type, imbdId, Plot, Awards }) => {
   return (
     <>
       {
@@ -31,4 +25,4 @@ const FeatureMovieCard = ({
   );
 };
 
-export default FeatureMovieCard;
+export default MovieCard;

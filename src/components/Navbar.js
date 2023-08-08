@@ -4,12 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { logOut } from "../auth/firebase";
 import { AuthContext } from "../context/AuthContext";
 
-
 const Navbar = () => {
   const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
- 
- 
 
   return (
     <div>
@@ -18,6 +15,7 @@ const Navbar = () => {
           <Link to="/" className="navbar-brand text-white">
             <h4>HOME</h4>
           </Link>
+
           <div className="d-flex text-white align-items-center">
             {currentUser ? (
               <h5 className="mb-0 text-capitalize">
