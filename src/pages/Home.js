@@ -8,10 +8,10 @@ import FeatureMovieCard from "../components/FeatureMovieCard";
 const Main = () => {
   const navigate = useNavigate();
   const { currentUser } = useContext(AuthContext);
+
   const [searchTerm, setSearchTerm] = useState("");
   const [searchMovies, setSearchMovies] = useState([]);
   const [featureMovies, setFeatureMovies] = useState([]);
-  console.log(searchMovies);
 
   useEffect(() => {
     getFeatureMovies();
@@ -28,7 +28,6 @@ const Main = () => {
     ])
       .then((res) => res.map((res) => res.data))
       .then((res) => {
-        console.log(res);
         setFeatureMovies(res);
       })
       .catch((err) => {
@@ -36,22 +35,12 @@ const Main = () => {
       });
   };
 
-  // const getSearchData = async() =>{
-  //   searchMovies.data.Search
-  // }
-
   const getSearchMovies = async (searchTerm) => {
     await axios
       .get(`https://www.omdbapi.com/?s=${searchTerm}&apiKey=6c3a2d45`)
-      .then((response) => setSearchMovies(response.data.Search));
+      .then((response) => setSearchMovies(response.data.Search))
+      .catch((err) => console.log(err));
   };
-
-  // const getSearchTerm = async() =>{
-  //   console.log(searchMovies)
-  //   // searchMovies.data.Search.map((movie)=>
-  //   //   await axios.get(
-  //   //   `https://www.omdbapi.com/?i=${movie.imdbID}&apiKey=6c3a2d45`)}
-  // }
 
   const handleSubmit = (e) => {
     e.preventDefault();
